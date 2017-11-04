@@ -1,71 +1,52 @@
-// import { FormBuilder, FormControl, Validator } from '@angular/forms';
-import { Component, ViewChild } from '@angular/core';
-import { AlertController, App, LoadingController, NavController, Slides, IonicPage } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { NavController } from 'ionic-angular';
 
 
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
-  public loginForm: any;
-  public backgroundImage = 'assets/imgs/background/background-1.jpg';
 
-  constructor(
-    public navCtrl: NavController,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public app: App
-  ) { 
-  }
+  backgrounds = [
+    'assets/imgs/background/background-1.jpg',
+    'assets/imgs/background/background-2.jpg',
+    'assets/imgs/background/background-3.jpg',
+    'assets/imgs/background/background-4.jpg'
+  ];
+  private loginForm: FormGroup;
 
-  // Slider methods
-  @ViewChild('slider') slider: Slides;
-  @ViewChild('innerSlider') innerSlider: Slides;
-
-  goToLogin() {
-    this.slider.slideTo(1);
-  }
-
-  goToSignup() {
-    this.slider.slideTo(2);
-  }
-
-  slideNext() {
-    this.innerSlider.slideNext();
-  }
-
-  slidePrevious() {
-    this.innerSlider.slidePrev();
-  }
-
-  presentLoading(message) {
-    const loading = this.loadingCtrl.create({
-      duration: 500
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({
+      user: ['', Validators.required],
+      password: ['', Validators.compose([Validators.minLength(4),
+        Validators.required])]
     });
-
-    loading.onDidDismiss(() => {
-      const alert = this.alertCtrl.create({
-        title: 'Success',
-        subTitle: message,
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    });
-
-    loading.present();
   }
 
-  login() {
-    this.navCtrl.setRoot(HomePage);
+  ionViewDidLoad() {
+    console.log('Hello LoginBackgroundSlider Page');
   }
 
-  signup() {
-    this.presentLoading('Thanks for signing up!');
-    // this.navCtrl.push(HomePage);
+  openResetPassword() {
+    console.log('Reset password clicked');
   }
-  resetPassword() {
-    this.presentLoading('An e-mail was sent with your new password.');
+
+  doLogin() {
+    if (!this.loginForm.valid) {
+      console.log('Invalid or empty data');
+    } else {
+      const userEmail = this.loginForm.value.email;
+      const userPassword = this.loginForm.value.password;
+
+      console.log('user data', userEmail, userPassword);
+
+      this.navCtrl.setRoot(HomePage);
+
+    }
   }
+
 }
+
