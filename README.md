@@ -1,29 +1,37 @@
-# README #
+# Simore Mobile #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Setup
 
-### What is this repository for? ###
+Requirements to use this project:
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+##### Node.js (https://nodejs.org/download/)
 
-### How do I get set up? ###
+##### npm (Node Package Manager, it comes with node.js installation)
+In case you're not with the latest version of npm:
+```sh
+$ sudo npm install npm -g
+```
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+##### Cordova & Ionic Cli
+To install both of them on your system just launch this command:
+```sh
+$ sudo npm install cordova ionic -g
+```
 
-### Contribution guidelines ###
+## Install NPM Dependencies
+Once you clone this repository, run this command on your terminal to install all needed dependencies:
+```sh
+$ npm install
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+## Install cordova plugin Dependencies
+Run this command on your terminal to install all needed puglins:
+```sh
+$ cordova prepare
+```
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+## Launching the App
+After installing the needed dependencies you are done, launch your app with a simple
+```sh
+$ ionic serve
+```
