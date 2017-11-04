@@ -1,0 +1,70 @@
+<ion-content class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <ion-slides #slider class="content-slider" direction="vertical">
+    <ion-slide class="swiper-no-swiping">
+      <div padding>
+        <img class="logo" src="assets/imgs/logo/simore.png" />
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button round color="light" class="login-button" (click)="goToLogin()">INGRESAR</button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button round color="light" class="login-button" (click)="goToSignup()">REGISTRATE</button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-slide>
+    <ion-slide class="zoom swiper-no-swiping">
+      <ion-slides #innerSlider class="content-slider">
+        <ion-slide class="swiper-no-swiping">
+          <div style="padding: 20% 32px 32px 32px">
+            <ion-item>
+              <ion-label floating>Usuario</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Contraseña</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <button ion-button block round (click)="login()" color="light" class="login-button">INGRESAR</button>
+            <button ion-button clear (click)="slideNext()" color="light" class="forgot-button">FORGOT PASSWORD?</button>
+          </div>
+          <button ion-button clear (click)="goToSignup()" class="slide-button position-bottom">REGISTRARME
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+        </ion-slide>
+        <ion-slide class="swiper-no-swiping">
+          <div style="padding: 20% 32px 32px 32px">
+            <ion-item>
+              <ion-label floating>E-mail</ion-label>
+              <ion-input type="email"></ion-input>
+            </ion-item>
+            <button ion-button block round (click)="resetPassword()" color="light" class="login-button">RECUPERAR PASSWORD</button>
+            <button ion-button clear (click)="slidePrevious()" color="light" class="goback-button">
+              <ion-icon name="arrow-back"></ion-icon>VOLVER</button>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-slide>
+    <ion-slide class="zoom swiper-no-swiping">
+      <button ion-button clear (click)="goToLogin()" class="slide-button">
+        INGRESAR
+        <ion-icon name="arrow-up"></ion-icon>
+      </button>
+      <div style="padding: 32px">
+        <ion-item>
+          <ion-label floating>Usuario</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+        <ion-item class="margin-bottom">
+          <ion-label floating>Confirme Contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+        <button ion-button block round (click)="signup()" color="light" class="login-button">REGISTRARME</button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
