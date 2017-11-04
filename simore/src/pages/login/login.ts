@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
+import {AuthenticationService} from '../../providers/authentication.service'
+import {HttpClient} from '../../providers/http-client.service'
 
 @Component({
   selector: 'page-login',
@@ -18,16 +21,21 @@ export class LoginPage {
   ];
   private loginForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+  constructor(
+      public navCtrl: NavController, 
+      public formBuilder: FormBuilder, 
+      public storage: Storage, 
+      public authentication: AuthenticationService,
+      public httpClient: HttpClient
+    ) {
     this.loginForm = formBuilder.group({
-      user: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.compose([Validators.minLength(4),
         Validators.required])]
     });
   }
 
   ionViewDidLoad() {
-    console.log('Hello LoginBackgroundSlider Page');
   }
 
   openResetPassword() {
@@ -38,13 +46,19 @@ export class LoginPage {
     if (!this.loginForm.valid) {
       console.log('Invalid or empty data');
     } else {
-      const userEmail = this.loginForm.value.email;
-      const userPassword = this.loginForm.value.password;
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
 
-      console.log('user data', userEmail, userPassword);
-
-      this.navCtrl.setRoot(HomePage);
-
+      this.authentication.login(username, password).subscribe(
+        user => {
+          this.httpClient.setAuthToken(user.token);
+          this.storage.set('user', user);
+          this.navCtrl.setRoot(HomePage);
+        }, 
+        error => { 
+          console.log(error);
+        }
+      );
     }
   }
 
