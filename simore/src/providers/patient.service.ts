@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ENV } from '../config/environment';
 import {AuthenticationService} from './authentication.service'
 import {HttpClient} from './http-client.service'
-import { Storage } from '@ionic/storage';
 
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -12,7 +11,7 @@ import 'rxjs/add/operator/map';
 export class PatientService {
   endpoint: string;
 
-  constructor(private http: HttpClient, public httpClient: HttpClient, public authentication: AuthenticationService) {
+  constructor(public httpClient: HttpClient, public authentication: AuthenticationService) {
     this.endpoint = ENV.API_URL;
   }
 
