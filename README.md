@@ -23,15 +23,21 @@ Once you clone this repository, run this command on your terminal to install all
 ```sh
 $ npm install
 ```
-
-## Install cordova plugin Dependencies
-Run this command on your terminal to install all needed puglins:
-```sh
-$ cordova prepare
-```
-
 ## Launching the App
 After installing the needed dependencies you are done, launch your app with a simple
 ```sh
 $ ionic serve
+```
+
+## Launching the App in the Phone
+To run the application in the phone
+First, check requirements:
+
+```sh
+cordova requirements
+```
+
+After all the requirements are OK, then excecute this command to run the app in the phone
+```sh
+$ ionic cordova run android
 ```
