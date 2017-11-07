@@ -15,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage';
 // Services
 import { HttpClient } from '../providers/http-client.service';
 import { AuthenticationService } from '../providers/authentication.service';
+import { PatientService } from '../providers/patient.service';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AuthenticationService } from '../providers/authentication.service';
     SplashScreen,
     HttpClient,
     AuthenticationService,
+    PatientService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

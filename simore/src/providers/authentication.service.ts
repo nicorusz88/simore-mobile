@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams, RequestOptions} from '@angular/http';
 import { ENV } from '../config/environment';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthenticationService {
 
-  user: undefined;
+  user: Object;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private storage: Storage) {
+  }
 
   public setUser(user){
     this.user = user;
   }
 
-  public getUser(){
-    this.user;
+  public getUser(): Object{
+    return this.user;
   }
 
   login(username, password) {

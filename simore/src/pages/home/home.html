@@ -16,7 +16,8 @@
 </ion-header>
 
 <ion-content padding>
-
+  <div *ngIf="patient">
+  {{patient.firstName}}
   <ion-list>
     <ion-item>
       <ion-icon name="md-clock" item-start></ion-icon>
@@ -39,5 +40,6 @@
       Recomendaciones
     </ion-item>
   </ion-list>
+  </div>
 
 </ion-content>

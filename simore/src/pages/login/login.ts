@@ -53,6 +53,7 @@ export class LoginPage {
         user => {
           this.httpClient.setAuthToken(user.token);
           this.storage.set('user', user);
+          this.authentication.setUser(user);
           this.navCtrl.setRoot(HomePage);
         }, 
         error => { 
