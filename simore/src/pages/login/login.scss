@@ -8,9 +8,6 @@ page-login {
     padding-top: 9vh;
     margin-bottom: 15vh;
   }
-  span {
-    color: white;
-  }
   .slide-background {
     background-size: cover;
     background-position: center top;
@@ -25,7 +22,7 @@ page-login {
     height: 100vh;
   }
   ion-item {
-    color: white !important;
+    //color: white !important;
     padding-left: 10px !important;
     margin-bottom: 10px;
     background-color: transparent !important;
@@ -35,7 +32,6 @@ page-login {
     color: white !important;
   }
   .login-container {
-    color: white;
     position: absolute;
     top: 0;
     padding: 10vw;
