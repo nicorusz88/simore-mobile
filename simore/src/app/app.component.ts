@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -9,6 +9,10 @@ import {AuthenticationService} from '../providers/authentication.service'
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+
+//import { FCM } from '@ionic-native/fcm';
+
+import { Push, PushObject, PushOptions} from '@ionic-native/push';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +30,10 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     public storage: Storage, 
     public httpClient: HttpClient,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService, 
+    public alertCtrl: AlertController,
+    //public fcm: FCM,
+    public push: Push
   ) {
     this.initializeApp();
 
@@ -53,6 +60,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.pushsetup();
     });
   }
 
@@ -65,5 +73,38 @@ export class MyApp {
   logout() {
     this.storage.remove('user');
     this.nav.setRoot(LoginPage);
+  }
+
+  pushsetup() {
+    const options: PushOptions = {
+       android: {
+           sound: 'true'
+       },
+       ios: {
+           alert: 'true',
+           badge: true,
+           sound: 'true'
+       },
+       windows: {}
+    };
+
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('notification').subscribe((notification: any) => {
+      console.log(notification);
+      if (notification.additionalData.foreground) {
+        let youralert = this.alertCtrl.create({
+          title: 'New Push notification',
+          message: notification.message
+        });
+        youralert.present();
+      }
+    });
+
+    pushObject.on('registration').subscribe((registration: any) => {
+      console.log(registration);
+    });
+
+    pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }
 }

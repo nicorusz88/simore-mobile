@@ -17,6 +17,11 @@ import { HttpClient } from '../providers/http-client.service';
 import { AuthenticationService } from '../providers/authentication.service';
 import { PatientService } from '../providers/patient.service';
 
+//import { FCM } from '@ionic-native/fcm';
+
+import { Push } from '@ionic-native/push';
+
+
 
 @NgModule({
   declarations: [
@@ -44,6 +49,8 @@ import { PatientService } from '../providers/patient.service';
     HttpClient,
     AuthenticationService,
     PatientService,
+    //FCM,
+    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
