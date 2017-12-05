@@ -1,3 +1,14 @@
 page-home {
 
+  #notification-button {            
+    position: relative;
+  }
+
+
+  #notifications-badge {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    border-radius: 100%;
+  }
 }

@@ -1,0 +1,11 @@
+page-notifications {
+  .notification-date {
+    color: #BBB;
+    font-style: italic;
+    font-size: 0.8em;
+  }
+
+  .unread {
+    background: color($colors, light, base);
+  }
+}

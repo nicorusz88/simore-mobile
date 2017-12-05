@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class PatientService {
+export class NotificationService {
   endpoint: string;
 
   constructor(public httpClient: HttpClient, public authentication: AuthenticationService) {
@@ -17,14 +17,12 @@ export class PatientService {
 
   get(): Observable<any>{
     let user = this.authentication.getUser();
-    let url = this.endpoint + "/users/" + user.id;
+    let url = this.endpoint + "/notifications/user/" + user.id;
     return this.httpClient.get(url).map(data => data.json());
   }
 
-  update(patient){
-    let user = this.authentication.getUser();
-    let url = this.endpoint + "/users/" + user.id;
-    return this.httpClient.put(url, patient).map(data => data.json());
+  markAsRead(notifictionId: number) {
+    let url = this.endpoint + "/notifications/set-read/" + notifictionId;
+    return this.httpClient.get(url).map(data => data.json());
   }
-
 }

@@ -5,8 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { VitalsPage } from '../pages/vitals/vitals';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,8 +17,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpClient } from '../providers/http-client.service';
 import { AuthenticationService } from '../providers/authentication.service';
 import { PatientService } from '../providers/patient.service';
-
-//import { FCM } from '@ionic-native/fcm';
+import { FitBitService } from '../providers/fit-bit.service'
+import { NotificationService } from '../providers/notification.service'
 
 import { Push } from '@ionic-native/push';
 
@@ -27,8 +28,9 @@ import { Push } from '@ionic-native/push';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    LoginPage
+    LoginPage,
+    VitalsPage,
+    NotificationsPage
   ],
   imports: [
     BrowserModule,
@@ -40,8 +42,9 @@ import { Push } from '@ionic-native/push';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    LoginPage
+    LoginPage,
+    VitalsPage,
+    NotificationsPage
   ],
   providers: [
     StatusBar,
@@ -49,7 +52,8 @@ import { Push } from '@ionic-native/push';
     HttpClient,
     AuthenticationService,
     PatientService,
-    //FCM,
+    FitBitService,
+    NotificationService,
     Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import {AuthenticationService} from '../../providers/authentication.service'
@@ -26,6 +26,7 @@ export class LoginPage {
       public formBuilder: FormBuilder, 
       public storage: Storage, 
       public authentication: AuthenticationService,
+      public alertCtrl: AlertController,
       public httpClient: HttpClient
     ) {
     this.loginForm = formBuilder.group({
@@ -51,16 +52,30 @@ export class LoginPage {
 
       this.authentication.login(username, password).subscribe(
         user => {
-          this.httpClient.setAuthToken(user.token);
-          this.storage.set('user', user);
-          this.authentication.setUser(user);
-          this.navCtrl.setRoot(HomePage);
+          if (user.roles["PATIENT"]){
+            console.log(user);
+            this.httpClient.setAuthToken(user.token);
+            this.storage.set('user', user);
+            this.authentication.setUser(user);
+            this.navCtrl.setRoot(HomePage);
+          }else{
+            this.showError("Credenciales inválidas");
+          }
         }, 
         error => { 
           console.log(error);
+          this.showError(error);
         }
       );
     }
+  }
+
+  showError(message){
+    let youralert = this.alertCtrl.create({
+      title: 'Atención',
+      message: message
+    });
+    youralert.present();
   }
 
 }

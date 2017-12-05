@@ -28,6 +28,13 @@ export class HttpClient {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
     let options = new RequestOptions({headers: headers});
-    return this.http.post(url, data, options);
+    return this.http.post(url, JSON.parse(JSON.stringify(data)), options);
+  }
+
+  put(url, data) {
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(url, JSON.parse(JSON.stringify(data)), options);
   }
 }

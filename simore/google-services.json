@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "267498744625",
+    "firebase_url": "https://simore-mobile.firebaseio.com",
+    "project_id": "simore-mobile",
+    "storage_bucket": "simore-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267498744625:android:ac66785f400c6e0f",
+        "android_client_info": {
+          "package_name": "ar.com.simore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267498744625-qfjsbqmj3283kru3gjftna6b5lit3rgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbMDda91nEIJcI5gQigaEpnExzZKULA5o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

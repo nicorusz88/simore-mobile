@@ -49,7 +49,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Inicio', component: HomePage },
     ];
 
   }
@@ -94,7 +94,7 @@ export class MyApp {
       console.log(notification);
       if (notification.additionalData.foreground) {
         let youralert = this.alertCtrl.create({
-          title: 'New Push notification',
+          title: 'Nueva notificación',
           message: notification.message
         });
         youralert.present();
@@ -102,6 +102,7 @@ export class MyApp {
     });
 
     pushObject.on('registration').subscribe((registration: any) => {
+      this.storage.set('registrationId', registration.registrationId);
       console.log(registration);
     });
 

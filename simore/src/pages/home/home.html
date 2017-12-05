@@ -8,8 +8,10 @@
       <button ion-button icon-only color="royal">
         <ion-icon name="md-mail"></ion-icon>
       </button>
-      <button ion-button icon-only color="royal">
-        <ion-icon name="md-notifications"></ion-icon>
+      <button id="notification-button" ion-button icon-only color="royal" (click)="goToNotifications()">
+        <ion-icon name="md-notifications">
+          <ion-badge id="notifications-badge" color="danger">{{this.undeadNotifications}}</ion-badge>
+        </ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -23,7 +25,7 @@
       <ion-icon name="md-clock" item-start></ion-icon>
       Checkins
     </ion-item>
-    <ion-item>
+    <ion-item (click)="goToVitals()">
       <ion-icon name="md-heart" item-start></ion-icon>
       Vitals
     </ion-item>
