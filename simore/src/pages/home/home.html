@@ -21,11 +21,13 @@
   <div *ngIf="patient">
     <ion-list>
       <ion-item>
-        <ion-thumbnail item-start>
+        <ion-avatar item-start>
           <img src="assets/imgs/logo/thumb.png">
-        </ion-thumbnail>
-        <h2>{{patient.firstName}}, {{patient.lastName}}</h2>
+        </ion-avatar>
+        <h2>{{patient.firstName}}</h2>
+        <h2>{{patient.lastName}}</h2>
         <p>{{patient.treatment.treatmentTemplate.name}}</p>
+        <p>A cargo de {{patient.professional.firstName}}, {{patient.professional.lastName}}</p>
       </ion-item>
     </ion-list>
 
