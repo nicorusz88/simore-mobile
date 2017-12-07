@@ -4,17 +4,91 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Vitals</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only color="royal">
-        <ion-icon name="md-mail"></ion-icon>
-      </button>
-      <button ion-button icon-only color="royal">
-        <ion-icon name="md-notifications"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  
+  <ion-card *ngIf="this.data && this.data['HEART_RATE']" class="heart-rate">
+    <ion-card-header>
+      HEART RATE
+    </ion-card-header>
+    <ion-card-content>
+      <div text-center class="heart">
+        <ion-icon name="heart" ios="ios-heart" md="md-heart"></ion-icon> <span>bpm</span>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6></ion-col>
+          <ion-col col-2 text-center>
+             <ion-icon name="arrow-up" ios="ios-arrow-up" md="md-arrow-up"></ion-icon>
+          </ion-col>
+          <ion-col col-2 text-center>
+             <ion-icon name="arrow-down" ios="ios-arrow-down" md="md-arrow-down"></ion-icon>
+          </ion-col>
+          <ion-col col-2 text-center>
+            <ion-icon name="time" ios="ios-time" md="md-time"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row  *ngFor="let item of this.data['HEART_RATE']" [hidden]="item.name == 'Resting Heart Rate'">
+          <ion-col col-6>{{item.name}}</ion-col>
+          <ion-col col-2 text-right>{{item.max}}</ion-col>
+          <ion-col col-2 text-right>{{item.min}}</ion-col>
+          <ion-col col-2 text-right>{{item.minutes}}</ion-col>
+        </ion-row>
+       
+        <ion-row  *ngFor="let item of this.data['HEART_RATE']" [hidden]="item.name != 'Resting Heart Rate'" class="resting-heart-rate">
+          <ion-col col-8>Resting Heart Rate</ion-col>
+          <ion-col col-4>{{item.max}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.data && this.data['WEIGHT'] && this.data['WEIGHT'].length > 0">
+    <ion-card-header>
+      PESO
+    </ion-card-header>
+    <ion-card-content class="vital-numeric">
+      <div class="vital-numeric-container">
+        <span>300</span> Kg
+      </div>
+      <ion-row text-left>
+        <ion-col col-12>% de Grasas quemadas: 80989</ion-col>
+        <ion-col col-12>IMC:</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.data && this.data['BURNT_CALORIES'] && this.data['BURNT_CALORIES'].length > 0">
+    <ion-card-header>
+      CALORÍAS QUEMADAS
+    </ion-card-header>
+    <ion-card-content class="vital-numeric">
+      <div class="vital-numeric-container">
+        <span>{{this.data['BURNT_CALORIES'][0].value}}</span> Kcal.
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.data && this.data['STEPS'] && this.data['STEPS'].length > 0">
+    <ion-card-header>
+      PASOS
+    </ion-card-header>
+     <ion-card-content class="vital-numeric">
+      <div class="vital-numeric-container">
+        <span>{{this.data['STEPS'][0].value}}</span> <ion-icon name="walk" ios="ios-walk" md="md-walk"></ion-icon>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="this.data && this.data['DISTANCE'] && this.data['DISTANCE'].length > 0">
+    <ion-card-header>
+      DISTANCIA
+    </ion-card-header>
+     <ion-card-content class="vital-numeric">
+      <div class="vital-numeric-container">
+        <span>{{this.data['DISTANCE'][0].value}}</span> Km.
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

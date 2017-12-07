@@ -1,0 +1,41 @@
+page-vitals {
+  ion-card-header {
+    border-bottom: solid 1px #CCC;
+  }
+
+  .heart-rate{
+
+    .heart { 
+      ion-icon {
+        font-size: 4em;
+        color: red;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .resting-heart-rate {
+      border-top: solid 1px #CCC;
+    }
+  }
+
+
+  .vital-numeric {
+
+    .vital-numeric-container {
+      text-align: center;
+      border: solid 2px #CCCCCC;
+      border-radius: 100%;
+      padding: 20px;
+      width: 40%;
+      margin: 10px auto;
+      span {
+
+      }
+    }
+
+
+  }
+}

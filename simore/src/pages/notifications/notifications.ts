@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import {AuthenticationService} from '../../providers/authentication.service'
@@ -21,12 +21,12 @@ export class NotificationsPage {
   items: Array<{
     id: number, 
     icon: string, 
-    title: string, 
+    date: string,
     note: string,
     notificationType: string,
-    read: boolean
+    read: boolean,
+    class: string
   }>;
-
 
   constructor(
       public navCtrl: NavController, 
@@ -72,15 +72,19 @@ export class NotificationsPage {
       for (let i = 0; i < notifications.length; i++){
         let notification = notifications[i];
         console.log(notification);
-        this.items.push({
-          id: notification.id,
-          date: moment(notification.actualSendDate).format('DD/MM/YYYY HH:mm:ss'),
-          note: notification.body,
-          icon: this.icons[notification.notificationType],
-          read: notification.readDate != null,
-          notificationType: notification.notificationType,
-          class: notification.readDate ? 'read' : 'unread'
-        });
+        let actualSendDate: number = notification.actualSendDate;
+        let actualSendDateParsed: string = moment(actualSendDate).format('DD/MM/YYYY HH:mm:ss');
+        let item = {
+          id: <number>notification.id,
+          date: <string>actualSendDateParsed,
+          note: <string>notification.body,
+          icon: <string>this.icons[notification.notificationType],
+          read: <boolean>(notification.readDate != null),
+          notificationType: <string>notification.notificationType,
+          class: <string>(notification.readDate ? 'read' : 'unread')
+        };
+
+        this.items.push(item);
       }
     }, error => {
 
