@@ -19,29 +19,38 @@
 
 <ion-content padding>
   <div *ngIf="patient">
-  {{patient.firstName}}
-  <ion-list>
-    <ion-item>
-      <ion-icon name="md-clock" item-start></ion-icon>
-      Checkins
-    </ion-item>
-    <ion-item (click)="goToVitals()">
-      <ion-icon name="md-heart" item-start></ion-icon>
-      Vitals
-    </ion-item>
-    <ion-item>
-      <ion-icon name="md-medkit" item-start></ion-icon>
-      Medicinas
-    </ion-item>
-    <ion-item>
-      <ion-icon name="md-calendar" item-start></ion-icon>
-      Citas
-    </ion-item>
-    <ion-item>
-      <ion-icon name="md-checkmark" item-start></ion-icon>
-      Recomendaciones
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/logo/thumb.png">
+        </ion-thumbnail>
+        <h2>{{patient.firstName}}, {{patient.lastName}}</h2>
+        <p>{{patient.treatment.treatmentTemplate.name}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="md-clock" item-start></ion-icon>
+        Checkins
+      </ion-item>
+      <ion-item (click)="goToVitals()">
+        <ion-icon name="md-heart" item-start></ion-icon>
+        Vitals
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-medkit" item-start></ion-icon>
+        Medicinas
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-calendar" item-start></ion-icon>
+        Citas
+      </ion-item>
+      <ion-item>
+        <ion-icon name="md-checkmark" item-start></ion-icon>
+        Recomendaciones
+      </ion-item>
+    </ion-list>
   </div>
 
 </ion-content>

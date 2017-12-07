@@ -87,7 +87,7 @@
     </ion-card-header>
      <ion-card-content class="vital-numeric">
       <div class="vital-numeric-container">
-        <span>{{this.data['DISTANCE'][0].value}}</span> Km.
+        <span>{{this.data['DISTANCE'][0].value | number:'1.2-2'}}</span> Km.
       </div>
     </ion-card-content>
   </ion-card>
