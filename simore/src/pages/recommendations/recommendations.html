@@ -8,15 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="this.appointments">
+  <div *ngIf="this.recommendations">
     <ion-card *ngFor="let item of this.recommendations">
       <ion-card-header>
         {{item.name}}  
       </ion-card-header>
       <ion-card-content>
-        <p class="date">A las {{item.date}}</p>
-        <p class="doctor">{{item.doctor}}</p>
-        <p class="address">{{item.address}}</p>
+        <p>{{item.text}}</p>
+        <p>{{item.date}}</p>
       </ion-card-content>
     </ion-card>
   </div>

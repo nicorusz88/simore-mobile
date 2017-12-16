@@ -8,15 +8,20 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="this.appointments">
+  <div *ngIf="this.medications">
     <ion-card *ngFor="let item of this.medications">
       <ion-card-header>
-        {{item.name}}  
+        Tomar {{item.quantity}} de {{item.name}}  
       </ion-card-header>
       <ion-card-content>
-        <p class="date">A las {{item.date}}</p>
-        <p class="doctor">{{item.doctor}}</p>
-        <p class="address">{{item.address}}</p>
+        <ion-list>
+          <ion-item [hidden]="!item.next">
+            Próxima: {{item.next}}
+          </ion-item>
+          <ion-item [hidden]="!item.previous">
+            anterior: {{item.previous}}
+          </ion-item>
+        </ion-list>
       </ion-card-content>
     </ion-card>    
 

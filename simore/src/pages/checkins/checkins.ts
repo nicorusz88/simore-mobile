@@ -26,5 +26,9 @@ export class CheckinsPage {
       }
     );
   }
+
+  answer(checkin){
+    console.log(checkin);
+  }
  
 }

@@ -21,4 +21,10 @@ export class CheckinService {
     return this.httpClient.get(url).map(data => data.json());
   }
 
+  get(checkinId: number): Observable<any> {
+    let user = this.authentication.getUser();
+    let url = this.endpoint + "/checkins/user/" + user.id;
+    return this.httpClient.get(url).map(data => data.json()); 
+  }
+
 }
