@@ -11,6 +11,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { AppointmentsPage } from '../pages/appointments/appointments';
 import { RecommendationsPage } from '../pages/recommendations/recommendations';
 import { MedicationsPage } from '../pages/medications/medications';
+import { CheckinsPage } from '../pages/checkins/checkins';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,7 +41,8 @@ import { Push } from '@ionic-native/push';
     NotificationsPage,
     AppointmentsPage,
     MedicationsPage,
-    RecommendationsPage
+    RecommendationsPage,
+    CheckinsPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { Push } from '@ionic-native/push';
     NotificationsPage,
     AppointmentsPage,
     MedicationsPage,
-    RecommendationsPage
+    RecommendationsPage,
+    CheckinsPage
   ],
   providers: [
     StatusBar,
