@@ -25,6 +25,7 @@ import { NotificationService } from '../providers/notification.service'
 import { AppointmentService } from '../providers/appointment.service'
 import { RecommendationService } from '../providers/recommendation.service'
 import { MedicationService } from '../providers/medication.service'
+import { CheckinService } from '../providers/checkin.service'
 
 import { Push } from '@ionic-native/push';
 
@@ -69,6 +70,7 @@ import { Push } from '@ionic-native/push';
     AppointmentService,
     RecommendationService,
     MedicationService,
+    CheckinService,
     Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

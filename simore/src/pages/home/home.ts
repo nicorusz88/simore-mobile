@@ -7,6 +7,7 @@ import { AppointmentsPage } from '../appointments/appointments'
 import { NotificationsPage } from '../notifications/notifications'
 import { RecommendationsPage } from '../recommendations/recommendations'
 import { MedicationsPage } from '../medications/medications'
+import { CheckinsPage } from '../checkins/checkins'
 
 import { NotificationService } from '../../providers/notification.service'
 
@@ -74,6 +75,10 @@ export class HomePage {
 
   goToNotifications() {
     this.navCtrl.push(NotificationsPage); 
+  }
+
+  goToCheckins() {
+    this.navCtrl.push(CheckinsPage); 
   }
 
 }
