@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Recomendaciones</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.appointments">
+    <ion-card *ngFor="let item of this.recommendations">
+      <ion-card-header>
+        {{item.name}}  
+      </ion-card-header>
+      <ion-card-content>
+        <p class="date">A las {{item.date}}</p>
+        <p class="doctor">{{item.doctor}}</p>
+        <p class="address">{{item.address}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

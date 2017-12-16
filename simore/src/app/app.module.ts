@@ -8,6 +8,9 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { VitalsPage } from '../pages/vitals/vitals';
 import { NotificationsPage } from '../pages/notifications/notifications';
+import { AppointmentsPage } from '../pages/appointments/appointments';
+import { RecommendationsPage } from '../pages/recommendations/recommendations';
+import { MedicationsPage } from '../pages/medications/medications';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,6 +22,9 @@ import { AuthenticationService } from '../providers/authentication.service';
 import { PatientService } from '../providers/patient.service';
 import { FitBitService } from '../providers/fit-bit.service'
 import { NotificationService } from '../providers/notification.service'
+import { AppointmentService } from '../providers/appointment.service'
+import { RecommendationService } from '../providers/recommendation.service'
+import { MedicationService } from '../providers/medication.service'
 
 import { Push } from '@ionic-native/push';
 
@@ -30,7 +36,10 @@ import { Push } from '@ionic-native/push';
     HomePage,
     LoginPage,
     VitalsPage,
-    NotificationsPage
+    NotificationsPage,
+    AppointmentsPage,
+    MedicationsPage,
+    RecommendationsPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +53,10 @@ import { Push } from '@ionic-native/push';
     HomePage,
     LoginPage,
     VitalsPage,
-    NotificationsPage
+    NotificationsPage,
+    AppointmentsPage,
+    MedicationsPage,
+    RecommendationsPage
   ],
   providers: [
     StatusBar,
@@ -54,6 +66,9 @@ import { Push } from '@ionic-native/push';
     PatientService,
     FitBitService,
     NotificationService,
+    AppointmentService,
+    RecommendationService,
+    MedicationService,
     Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Citas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.appointments">
+    <h2>Hoy</h2>
+    
+    <ion-card *ngFor="let item of this.appointments.todayAppointments">
+      <ion-card-header>
+        {{item.name}}  
+      </ion-card-header>
+      <ion-card-content>
+        <p class="date">A las {{item.date}}</p>
+        <p class="doctor">{{item.doctor}}</p>
+        <p class="address">{{item.address}}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <h2>Mañana</h2>
+
+    <ion-card *ngFor="let item of this.appointments.tomorrowAppointments">
+      <ion-card-header>
+        {{item.name}}  
+      </ion-card-header>
+      <ion-card-content>
+        <p class="date">A las {{item.date}}</p>
+        <p class="doctor">{{item.doctor}}</p>
+        <p class="address">{{item.address}}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <h2>Próximas</h2>
+    
+    <ion-card *ngFor="let item of this.appointments.followingAppointments">
+      <ion-card-header>
+        {{item.name}}  
+      </ion-card-header>
+      <ion-card-content>
+        <p class="date">El día {{item.date}} a las {{item.date}}</p>
+        <p class="doctor">{{item.doctor}}</p>
+        <p class="address">{{item.address}}</p>
+      </ion-card-content>
+    </ion-card>
+    
+
+  </div>
+</ion-content>

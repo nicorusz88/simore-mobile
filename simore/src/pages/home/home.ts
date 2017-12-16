@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
+
 import { PatientService } from '../../providers/patient.service'
 import { VitalsPage } from '../vitals/vitals'
+import { AppointmentsPage } from '../appointments/appointments'
 import { NotificationsPage } from '../notifications/notifications'
-import {NotificationService} from '../../providers/notification.service'
+import { RecommendationsPage } from '../recommendations/recommendations'
+import { MedicationsPage } from '../medications/medications'
+
+import { NotificationService } from '../../providers/notification.service'
+
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -47,12 +53,23 @@ export class HomePage {
         }
       );
     });
-    
   }
 
 
   goToVitals(){
     this.navCtrl.push(VitalsPage);
+  }
+
+  goToAppointments(){
+    this.navCtrl.push(AppointmentsPage);
+  }
+
+  goToMedications(){
+    this.navCtrl.push(MedicationsPage);
+  }
+
+  goToRecommendations(){
+    this.navCtrl.push(RecommendationsPage);
   }
 
   goToNotifications() {
