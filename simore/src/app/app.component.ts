@@ -77,9 +77,6 @@ export class MyApp {
 
   pushsetup() {
     const options: PushOptions = {
-       android: {
-           sound: 'true'
-       },
        ios: {
            alert: 'true',
            badge: true,
