@@ -16,10 +16,10 @@
       <ion-card-content>
         <ion-list>
           <ion-item [hidden]="!item.next">
-            Próxima: {{item.next}}
+            Próxima: {{item.next | date: 'dd/MM/yyyy HH:mm:ss'}}
           </ion-item>
           <ion-item [hidden]="!item.previous">
-            anterior: {{item.previous}}
+            Anterior: {{item.previous | date: 'dd/MM/yyyy HH:mm:ss'}}
           </ion-item>
         </ion-list>
       </ion-card-content>
