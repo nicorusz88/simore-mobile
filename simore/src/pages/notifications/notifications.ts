@@ -6,6 +6,10 @@ import {AuthenticationService} from '../../providers/authentication.service'
 import {NotificationService} from '../../providers/notification.service'
 
 import {VitalsPage} from '../vitals/vitals'
+import {CheckinsPage} from '../checkins/checkins'
+import {RecommendationsPage} from '../recommendations/recommendations'
+import {AppointmentsPage} from '../appointments/appointments'
+import {MedicationsPage} from '../medications/medications'
 
 
 import moment from 'moment';
@@ -42,11 +46,11 @@ export class NotificationsPage {
     this.icons['APPOINTMENT'] = 'md-calendar';
     this.icons['RECOMMENDATION'] = 'md-checkmark';
 
-    this.pages['MEDICATION'] = VitalsPage;
+    this.pages['MEDICATION'] = MedicationsPage;
     this.pages['VITAL'] = VitalsPage;
-    this.pages['CHECKIN'] = VitalsPage;
-    this.pages['APPOINTMENT'] = VitalsPage;
-    this.pages['RECOMMENDATION'] = VitalsPage;
+    this.pages['CHECKIN'] = CheckinsPage;
+    this.pages['APPOINTMENT'] = AppointmentsPage;
+    this.pages['RECOMMENDATION'] = RecommendationsPage;
 
     this.items = [];
   }

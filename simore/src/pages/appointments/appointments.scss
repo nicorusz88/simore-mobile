@@ -1,3 +1,15 @@
 page-appointments {
-  
+  h2 {
+    text-transform: uppercase;
+    color: #FFF;
+    font-size: 1em;
+    background: #CCC;
+    border-bottom: solid 4px #EEE;
+    border-top: solid 4px #EEE;
+    padding: 10px 0px;
+  }
+
+  p.empty {
+    font-style: italic;
+  }
 }

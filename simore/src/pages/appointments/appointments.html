@@ -3,51 +3,56 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Citas</ion-title>
+    <ion-title><ion-icon name="md-calendar"></ion-icon> Citas</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="this.appointments">
-    <h2>Hoy</h2>
+    <h2 text-center>Hoy</h2>
     
     <ion-card *ngFor="let item of this.appointments.todayAppointments">
-      <ion-card-header>
-        {{item.name}}  
+      <ion-card-header text-uppercase>
+        {{item.name}}
       </ion-card-header>
       <ion-card-content>
-        <p class="date">A las {{item.date}}</p>
+        <p class="date"><ion-icon name="md-clock" item-start></ion-icon> {{item.date | date:'HH:mm:ss'}}hs</p>
         <p class="doctor">{{item.doctor}}</p>
         <p class="address">{{item.address}}</p>
       </ion-card-content>
     </ion-card>
 
-    <h2>Mañana</h2>
+    <p class="empty" [hidden]="this.appointments.todayAppointments.length > 0" text-center>No hay citas para hoy</p>
+
+    <h2 text-center>Mañana</h2>
 
     <ion-card *ngFor="let item of this.appointments.tomorrowAppointments">
-      <ion-card-header>
+      <ion-card-header text-uppercase>
         {{item.name}}  
       </ion-card-header>
       <ion-card-content>
-        <p class="date">A las {{item.date}}</p>
+        <p class="date"><ion-icon name="md-clock" item-start></ion-icon> {{item.date | date:'HH:mm:ss'}}hs</p>
         <p class="doctor">{{item.doctor}}</p>
         <p class="address">{{item.address}}</p>
       </ion-card-content>
     </ion-card>
 
-    <h2>Próximas</h2>
+    <p class="empty" [hidden]="this.appointments.tomorrowAppointments.length > 0" text-center>No hay citas para mañana</p>
+
+    <h2 text-center>Próximas</h2>
     
     <ion-card *ngFor="let item of this.appointments.followingAppointments">
-      <ion-card-header>
+      <ion-card-header text-uppercase>
         {{item.name}}  
       </ion-card-header>
       <ion-card-content>
-        <p class="date">El día {{item.date}} a las {{item.date}}</p>
+        <p class="date"><ion-icon name="md-clock" item-start></ion-icon> {{item.date | date: 'dd/MM/yyyy'}} a las {{item.date | date: 'HH:mm:ss'}}hs</p>
         <p class="doctor">{{item.doctor}}</p>
         <p class="address">{{item.address}}</p>
       </ion-card-content>
     </ion-card>
-    
+
+    <p class="empty" [hidden]="this.appointments.followingAppointments.length > 0" text-center >No hay próximas citas</p>
 
   </div>
 </ion-content>

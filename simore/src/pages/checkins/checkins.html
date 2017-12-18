@@ -9,22 +9,22 @@
 
 <ion-content>
   <div *ngIf="this.checkins">
-      <ion-card *ngFor="let item of this.checkins">
-        <ion-card-header>
-          {{item.question.question}}  
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list radio-group [(ngModel)]="item.answer" [hidden]="!item.question.choiceQuestionOptions">
-            <ion-item *ngFor="let option of item.question.choiceQuestionOptions">
-              <ion-label>{{option.option}}</ion-label>
-              <ion-radio value="{{option.id}}"></ion-radio>
-            </ion-item>
-          </ion-list>
-          <ion-input type="text" placeholder="Respuesta" [(ngModel)]="item.answer" [hidden]="item.question.choiceQuestionOptions"></ion-input>
-          <ion-item>
-            <button ion-button clear item-start (click)="answer(item)">Responder</button>
+    <ion-card *ngFor="let item of this.checkins">
+      <ion-card-header>
+        {{item.question.question}}  
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list radio-group [(ngModel)]="item.answer" [hidden]="!item.question.choiceQuestionOptions">
+          <ion-item *ngFor="let option of item.question.choiceQuestionOptions">
+            <ion-label>{{option.option}}</ion-label>
+            <ion-radio value="{{option.id}}"></ion-radio>
           </ion-item>
-        </ion-card-content>
-      </ion-card>
+        </ion-list>
+        <ion-input type="text" placeholder="Respuesta" [(ngModel)]="item.answer" [hidden]="item.question.choiceQuestionOptions"></ion-input>
+        <ion-item>
+          <button ion-button clear item-start (click)="answer(item)">Responder</button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

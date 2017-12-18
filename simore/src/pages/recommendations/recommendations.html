@@ -3,14 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Recomendaciones</ion-title>
+    <ion-title><ion-icon name="md-checkmark"></ion-icon> Recomendaciones</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="this.recommendations">
     <ion-card *ngFor="let item of this.recommendations">
-      <ion-card-header>
+      <ion-card-header text-uppercase>
         {{item.name}}  
       </ion-card-header>
       <ion-card-content>
