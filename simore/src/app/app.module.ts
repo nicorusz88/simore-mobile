@@ -16,6 +16,7 @@ import { CheckinsPage } from '../pages/checkins/checkins';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 // Services
 import { HttpClient } from '../providers/http-client.service';
@@ -75,6 +76,7 @@ import { Push } from '@ionic-native/push';
     MedicationService,
     CheckinService,
     Push,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

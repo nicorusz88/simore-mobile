@@ -87,4 +87,5 @@
         <variable name="SENDER_ID" value="267498744625" />
     </plugin>
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
 </widget>

@@ -19,6 +19,12 @@ export class FitBitService {
     this.endpoint = ENV.API_URL;
   }
 
+  updateUserToken(accessToken, expiresIn, accountUserId){
+    let user = this.authentication.getUser();
+    let url = this.endpoint + "/users/" + user.id + '/fitbit';
+    return this.httpClient.post(url, {wearableType: 'FITBIT', access_token: accessToken, expires_in: expiresIn, user_id: accountUserId}).map(data => data.json());
+  }
+
   heartRate(treatmentId: number): Observable<any>{
     let url = this.endpoint + this.urlPrefix + "heart-rate/treatment/" + treatmentId + "/date/" + moment().format("YYYY-MM-DD");
     return this.httpClient.get(url).map(data => data.json());
