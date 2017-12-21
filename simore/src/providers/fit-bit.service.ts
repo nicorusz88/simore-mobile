@@ -22,7 +22,7 @@ export class FitBitService {
   updateUserToken(accessToken, expiresIn, accountUserId){
     let user = this.authentication.getUser();
     let url = this.endpoint + "/users/" + user.id + '/fitbit';
-    return this.httpClient.post(url, {wearableType: 'FITBIT', access_token: accessToken, expires_in: expiresIn, user_id: accountUserId}).map(data => data.json());
+    return this.httpClient.post(url, {wearableType: 'FITBIT', access_token: accessToken, expires_in: expiresIn, user_id: accountUserId});
   }
 
   heartRate(treatmentId: number): Observable<any>{

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><ion-icon name="md-mail"></ion-icon> Mensajes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="this.messages">
+    <div *ngFor="let item of this.messages" [ngClass]="{'patient' : item.from.id == this.patient.id, 'professional': item.from.id == this.professional.id}">
+      <ion-card>
+        <ion-card-content>
+          <p class="text">{{item.text}}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    
+    <p class="empty" [hidden]="this.messages.length > 0" text-center>No hay mensajes</p>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <div text-center>
+    <ion-input type="text" placeholder="Escribe un mensaje aqui" [(ngModel)]="messageText"></ion-input>
+    <button ion-button color="light" small (click)="send()">Enviar</button>
+  </div>
+</ion-footer>

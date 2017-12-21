@@ -12,6 +12,7 @@ import { AppointmentsPage } from '../pages/appointments/appointments';
 import { RecommendationsPage } from '../pages/recommendations/recommendations';
 import { MedicationsPage } from '../pages/medications/medications';
 import { CheckinsPage } from '../pages/checkins/checkins';
+import { MessagesPage } from '../pages/messages/messages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,6 +29,7 @@ import { AppointmentService } from '../providers/appointment.service'
 import { RecommendationService } from '../providers/recommendation.service'
 import { MedicationService } from '../providers/medication.service'
 import { CheckinService } from '../providers/checkin.service'
+import { MessageService } from '../providers/message.service'
 
 import { Push } from '@ionic-native/push';
 
@@ -43,7 +45,8 @@ import { Push } from '@ionic-native/push';
     AppointmentsPage,
     MedicationsPage,
     RecommendationsPage,
-    CheckinsPage
+    CheckinsPage,
+    MessagesPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { Push } from '@ionic-native/push';
     AppointmentsPage,
     MedicationsPage,
     RecommendationsPage,
-    CheckinsPage
+    CheckinsPage,
+    MessagesPage
   ],
   providers: [
     StatusBar,
@@ -77,6 +81,7 @@ import { Push } from '@ionic-native/push';
     CheckinService,
     Push,
     InAppBrowser,
+    MessageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

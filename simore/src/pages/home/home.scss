@@ -1,11 +1,19 @@
 page-home {
 
-  #notification-button {            
+  #notification-button, #messages-button {            
     position: relative;
   }
 
 
   #notifications-badge {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    border-radius: 100%;
+  }
+
+
+  #messages-badge {
     position: absolute;
     bottom: -3px;
     right: -3px;

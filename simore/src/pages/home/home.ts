@@ -4,12 +4,14 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { PatientService } from '../../providers/patient.service'
 import { FitBitService } from '../../providers/fit-bit.service'
+import { MessageService } from '../../providers/message.service'
 import { VitalsPage } from '../vitals/vitals'
 import { AppointmentsPage } from '../appointments/appointments'
 import { NotificationsPage } from '../notifications/notifications'
 import { RecommendationsPage } from '../recommendations/recommendations'
 import { MedicationsPage } from '../medications/medications'
 import { CheckinsPage } from '../checkins/checkins'
+import { MessagesPage } from '../messages/messages'
 
 import { NotificationService } from '../../providers/notification.service'
 
@@ -22,8 +24,11 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   patient: any;
-  undeadNotifications: number = 0;
+  unreadNotifications: number = 0;
+  unreadMessagesCount: number = 0;
   interval: any;
+  intervalMessages: any;
+  hasFitbit: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -32,24 +37,29 @@ export class HomePage {
     public alertCtrl: AlertController,
     public notificationService: NotificationService,
     public iab: InAppBrowser,
-    public fitBitService: FitBitService
+    public fitBitService: FitBitService,
+    public messageService: MessageService
   ) {  
 
   }
 
   ionViewDidLoad() {
     this.loadData();
-    this.interval = setInterval(() => {this.loadNotifications()}, 5000);
   }
 
   ionViewWillEnter() {
-    this.interval = setInterval(() => {this.loadNotifications()}, 5000);
+    this.interval = setInterval(() => {this.loadNotifications()}, 4000);
+    this.intervalMessages = setInterval(() => { this.unreadMessages() }, 5000);
   }
 
   ionViewWillLeave() {
     console.log("Paro la carga de notificaciones");
     if (this.interval){
       clearInterval(this.interval);
+    }
+
+    if (this.intervalMessages){
+      clearInterval(this.intervalMessages);
     }
   }
 
@@ -87,6 +97,10 @@ export class HomePage {
     this.navCtrl.push(CheckinsPage); 
   }
 
+  goToMessages(){
+   this.navCtrl.push(MessagesPage); 
+  }
+
   fitbitLogin(){
     const browser = this.iab.create('https://www.fitbit.com/oauth2/authorize?client_id=228L4M&response_type=token&scope=activity%20profile%20heartrate%20location%20nutrition%20sleep%20weight&expires_in=31536000');
     browser.on('loadstart').subscribe(event => {
@@ -113,6 +127,8 @@ export class HomePage {
           }
         }
 
+        this.hasFitbit = true;
+        
         this.fitBitService.updateUserToken(parameterMap.access_token, parameterMap.expires_in, parameterMap.user_id).subscribe(data => {
           this.loadData();
         }, error => {
@@ -125,6 +141,13 @@ export class HomePage {
     });
   }
 
+  private unreadMessages(){
+    this.messageService.unread().subscribe(data => {
+      this.unreadMessagesCount = data;
+    }, error => {
+
+    });
+  }
 
   private loadData(){
     this.storage.get('registrationId').then((registrationId) => {
@@ -134,6 +157,15 @@ export class HomePage {
           this.patient.deviceToken = registrationId;
           this.patientService.update(this.patient).subscribe(data => {}, error => {});
 
+          if (this.patient.oauths && this.patient.oauths.length > 0){
+            for(let i = 0; i < this.patient.oauths.length; i++){
+              if (this.patient.oauths[i].wearableType == 'FITBIT'){
+               this.hasFitbit = true;
+              }
+            }
+          }
+
+          this.unreadMessages();
           this.loadNotifications();
         },
         error => { 
@@ -145,9 +177,10 @@ export class HomePage {
 
   private loadNotifications(){
     this.notificationService.get().subscribe( notifications => {
+      this.unreadNotifications = 0;
       for (let i = 0; i < notifications.length; i++){
         if (!notifications[i].readDate){
-          this.undeadNotifications++;
+          this.unreadNotifications++;
         }
       }
     }, notifications => {
