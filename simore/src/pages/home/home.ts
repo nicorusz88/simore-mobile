@@ -44,10 +44,11 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.loadData();
   }
 
   ionViewWillEnter() {
+    this.loadData();
+    
     this.interval = setInterval(() => {this.loadNotifications()}, 4000);
     this.intervalMessages = setInterval(() => { this.unreadMessages() }, 5000);
   }

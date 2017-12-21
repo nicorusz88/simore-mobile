@@ -18,6 +18,7 @@ export class MessagesPage {
   patient: any;
   professional: any;
   messageText: string;
+  interval: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -41,6 +42,15 @@ export class MessagesPage {
     },
     error => {
     });
+
+    this.interval = setInterval(() => {this.loadMessages()}, 4000);
+  }
+
+  ionViewWillLeave() {
+    console.log("Paro la carga de notificaciones");
+    if (this.interval){
+      clearInterval(this.interval);
+    }
   }
 
 
@@ -62,7 +72,7 @@ export class MessagesPage {
   scrollToBottom(){
     setTimeout(() => {
       this.content.scrollToBottom(300);
-    }, 1000);
+    }, 500);
     
   }
 
