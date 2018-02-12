@@ -77,7 +77,9 @@ export class MyApp {
 
   pushsetup() {
     const options: PushOptions = {
-       android: {},
+       android: {
+          senderID: 'string'
+       },
        ios: {
            alert: 'true',
            badge: true,
